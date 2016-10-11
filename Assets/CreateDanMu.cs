@@ -22,37 +22,7 @@ public class CreateDanMu : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //随机一条颜色
-            Color color = new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f));
-
-            DanMuPosType posType = DanMuPosType.RightToLeft;
-            int dur = Random.Range(0, 5);
-            dur = 2;
-            switch (dur)
-            {
-                case 0:
-                    posType = DanMuPosType.RightToLeft;
-                    break;
-                case 1:
-                    posType = DanMuPosType.LeftToRight;
-                    break;
-
-                case 2:
-                    posType = DanMuPosType.TopToBottom;
-                    break;
-
-                case 3:
-                    posType = DanMuPosType.BottomToTop;
-                    break;
-
-                case 4:
-                    posType = DanMuPosType.Stay;
-                    break;
-                
-            }
-
-
-            CreateOneDanMu("我是弹幕我是弹幕我是弹幕我是弹幕我是弹幕我是弹幕", color, posType, Random.Range(10f, 15f));
+            CreateRandomDanmu("我是弹幕我是弹幕我是弹幕我是弹幕我是弹幕");
         }
     }
 
@@ -63,42 +33,47 @@ public class CreateDanMu : MonoBehaviour {
         newText.transform.parent = Panel.transform;
     }
 
+    void CreateRandomDanmu(string showstr)
+    {
+        Color color = new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f));
+
+        DanMuPosType posType = DanMuPosType.RightToLeft;
+        int dur = Random.Range(0, 5);
+
+        switch (dur)
+        {
+            case 0:
+                posType = DanMuPosType.RightToLeft;
+                break;
+
+            case 1:
+                posType = DanMuPosType.LeftToRight;
+                break;
+
+            case 2:
+                posType = DanMuPosType.TopToBottom;
+                break;
+
+            case 3:
+                posType = DanMuPosType.BottomToTop;
+                break;
+
+            case 4:
+                posType = DanMuPosType.Stay;
+                break;
+
+        }
+
+
+        CreateOneDanMu(showstr, color, posType, Random.Range(10f, 15f));
+    }
+
     public void OnSendClick()
     {
         if (inputField.text!="")
         {
-            Color color = new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f));
 
-            DanMuPosType posType = DanMuPosType.RightToLeft;
-            int dur = Random.Range(0, 5);
-            
-            switch (dur)
-            {
-                case 0:
-                    posType = DanMuPosType.RightToLeft;
-                    break;
-
-                case 1:
-                    posType = DanMuPosType.LeftToRight;
-                    break;
-
-                case 2:
-                    posType = DanMuPosType.TopToBottom;
-                    break;
-
-                case 3:
-                    posType = DanMuPosType.BottomToTop;
-                    break;
-
-                case 4:
-                    posType = DanMuPosType.Stay;
-                    break;
-
-            }
-
-
-            CreateOneDanMu(inputField.text, color, posType, Random.Range(10f, 15f));
-
+            CreateRandomDanmu(inputField.text);
             inputField.text = "";
         }
     }

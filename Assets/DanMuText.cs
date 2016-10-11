@@ -116,6 +116,9 @@ public class DanMuText : MonoBehaviour
 
     void MoveTopToBottom(float showTime)
     {
+        //修改text的宽度
+        
+
         text.horizontalOverflow = HorizontalWrapMode.Wrap;
         text.verticalOverflow = VerticalWrapMode.Overflow;
         gameObject.transform.position = new Vector3(Random.Range(10, Screen.width - 10), Screen.height+50, 0);
@@ -125,6 +128,7 @@ public class DanMuText : MonoBehaviour
     void MoveBottomToTop(float showTime)
     {
         //gameObject.GetComponent<Renderer>().bounds.size.x=20;
+
 
         text.horizontalOverflow = HorizontalWrapMode.Wrap;
         text.verticalOverflow = VerticalWrapMode.Overflow;
